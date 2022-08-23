@@ -10,11 +10,6 @@ class PageNotFound404:
 
 class AppFramework:
 
-    # def __init__(self, urlpatterns: dict, framework_controller: list):
-    #     self.urlpatterns = urlpatterns
-    #     self.framework_controller = framework_controller
-    #     print(urlpatterns)
-    #     print(framework_controller)
     def __init__(self, routes_obj):
         self.routes_lst = routes_obj
 
@@ -43,18 +38,8 @@ class AppFramework:
 
         if path in self.routes_lst:
             view = self.routes_lst[path]
-            print(view)
         else:
             view = PageNotFound404()
-
-        # for front in self.framework_controller:
-        #     front(request)
-        # if path in self.routes_object:
-        #     print(self.routes_object)
-        #     view = self.routes_object[path]
-        #     print(view)
-        # else:
-        #     view = PageNotFound404()
 
         code, body = view(request)
         start_response(code, [('Content-Type', 'text/html')])
